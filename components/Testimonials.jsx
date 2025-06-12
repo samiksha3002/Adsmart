@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const testimonials = [
   {
@@ -26,60 +27,79 @@ const testimonials = [
   },
 ];
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 50 },
-  show: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.3, duration: 0.8 },
-  }),
-};
-
 export default function Testimonials() {
+  const [index, setIndex] = useState(0);
+
+  // Auto-slide every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="relative w-full py-24 px-6 md:px-20 bg-white text-gray-800 overflow-hidden">
+    <section className="relative w-full py-20 px-4 sm:px-6 md:px-16 bg-white text-gray-800 overflow-hidden">
+      {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
-        className="text-center mb-16"
+        className="text-center mb-14"
       >
-        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500 text-transparent bg-clip-text">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500 text-transparent bg-clip-text">
           What Our Clients Say
         </h2>
-        <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-          Hear how we’ve helped clients illuminate their world — both practically and beautifully.
+        <p className="mt-4 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+          Hear how we’ve helped clients illuminate their world — both
+          practically and beautifully.
         </p>
       </motion.div>
 
-      <div className="flex flex-col md:flex-row gap-10 justify-center items-center max-w-7xl mx-auto z-10 relative">
-        {testimonials.map((item, i) => (
+      {/* Auto-Sliding Testimonial */}
+      <div className="relative w-full max-w-3xl mx-auto">
+        <AnimatePresence mode="wait">
           <motion.div
-            key={i}
-            custom={i}
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="relative bg-white border border-orange-200 rounded-xl shadow-md p-6 md:w-1/3 w-full text-center hover:shadow-orange-300 transition duration-300"
+            key={index}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.6 }}
+            className="bg-white border border-orange-100 rounded-xl shadow-md p-8 text-center"
           >
             <img
-              src={item.image}
-              alt={item.name}
-              className="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-orange-400"
+              src={testimonials[index].image}
+              alt={testimonials[index].name}
+              className="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-orange-400 object-cover"
             />
-            <p className="text-gray-700 italic">“{item.message}”</p>
-            <h4 className="mt-4 text-lg font-semibold text-orange-600">
-              {item.name}
+            <p className="text-gray-700 italic mb-4 text-base sm:text-lg">
+              “{testimonials[index].message}”
+            </p>
+            <h4 className="text-lg font-semibold text-orange-600">
+              {testimonials[index].name}
             </h4>
-            <p className="text-sm text-gray-500">{item.title}</p>
+            <p className="text-sm text-gray-500">{testimonials[index].title}</p>
           </motion.div>
-        ))}
+        </AnimatePresence>
+
+        {/* Dots */}
+        <div className="flex justify-center mt-6 gap-2">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-3 h-3 rounded-full transition ${
+                index === i ? "bg-orange-500" : "bg-gray-300"
+              }`}
+            ></button>
+          ))}
+        </div>
       </div>
 
-      {/* Glowing Accent (in orange) */}
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-orange-100 rounded-full blur-3xl pointer-events-none z-0" />
+      {/* Orange Blur */}
+      <div className="absolute -bottom-20 right-0 sm:right-10 w-72 h-72 bg-orange-100 rounded-full blur-3xl pointer-events-none z-0" />
     </section>
   );
 }

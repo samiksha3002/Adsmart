@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import React from "react";
 
 const clients = [
-  { id: 1, name: "Client One", logo: "/Mahindra.png" },
-  { id: 2, name: "Client Two", logo: "/mc donald.png" },
-  { id: 3, name: "Client Three", logo: "/mp birla cement.png" },
-  { id: 4, name: "Client Four", logo: "/patanjali.png" },
-  { id: 5, name: "Client Five", logo: "/rokde jewellers.png" },
-  { id: 6, name: "Client Six", logo: "/samsung.png" },
+  { id: 1, name: "Mahindra", logo: "/Mahindra.png" },
+  { id: 2, name: "McDonald's", logo: "/mc donald.png" },
+  { id: 3, name: "MP Birla Cement", logo: "/mp birla cement.png" },
+  { id: 4, name: "Patanjali", logo: "/patanjali.png" },
+  { id: 5, name: "Rokde Jewellers", logo: "/rokde jewellers.png" },
+  { id: 6, name: "Samsung", logo: "/samsung.png" },
 ];
 
 export default function ClientLogos() {
@@ -30,7 +30,6 @@ export default function ClientLogos() {
       </svg>
 
       <div className="max-w-7xl mx-auto px-6 text-center">
-        {/* Section heading */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -49,57 +48,113 @@ export default function ClientLogos() {
           outstanding results.
         </motion.p>
 
-        {/* Logo marquee */}
-        <div
-          className="overflow-hidden relative"
-          onMouseEnter={(e) => {
-            e.currentTarget.querySelector(".marquee").style.animationPlayState =
-              "paused";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.querySelector(".marquee").style.animationPlayState =
-              "running";
-          }}
-        >
-          <div
-            className="marquee flex gap-16"
-            style={{
-              animation: "marquee 25s linear infinite",
-            }}
-          >
-            {[...clients, ...clients].map(({ id, name, logo }, idx) => (
-              <motion.div
-                key={`${id}-${idx}`}
-                className="bg-white/60 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-md cursor-pointer hover:scale-110 transform transition duration-500 ease-in-out"
-                role="img"
-                aria-label={`Logo of ${name}`}
+        {/* Dual-direction marquee for desktop */}
+        <div className="hidden md:block space-y-10">
+          {/* Top row - Left to right */}
+          <div className="overflow-hidden relative">
+            <div className="marquee-left flex gap-16">
+              {[...clients, ...clients].map(({ id, name, logo }, idx) => (
+                <motion.div
+                  key={`top-${id}-${idx}`}
+                  className="bg-white/60 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-md cursor-pointer hover:scale-110 transform transition duration-500 ease-in-out"
+                  title={name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <img
+                    src={logo}
+                    alt={name}
+                    className="h-14 md:h-16 w-auto mx-auto filter grayscale hover:grayscale-0 transition duration-500 drop-shadow-md"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom row - Right to left */}
+          <div className="overflow-hidden relative">
+            <div className="marquee-right flex gap-16">
+              {[...clients, ...clients].map(({ id, name, logo }, idx) => (
+                <motion.div
+                  key={`bottom-${id}-${idx}`}
+                  className="bg-white/60 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-md cursor-pointer hover:scale-110 transform transition duration-500 ease-in-out"
+                  title={name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <img
+                    src={logo}
+                    alt={name}
+                    className="h-14 md:h-16 w-auto mx-auto filter grayscale hover:grayscale-0 transition duration-500 drop-shadow-md"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Swiper */}
+        <div className="md:hidden overflow-x-auto whitespace-nowrap mt-6 px-1 scrollbar-hide">
+          <div className="inline-flex gap-6">
+            {clients.map(({ id, name, logo }) => (
+              <div
+                key={id}
+                className="bg-white/70 rounded-xl p-4 border border-white/20 shadow-md w-44 inline-block hover:scale-105 transition duration-300"
                 title={name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
               >
                 <img
                   src={logo}
                   alt={name}
-                  className="h-14 md:h-16 w-auto mx-auto filter grayscale hover:grayscale-0 transition duration-500"
+                  className="h-14 w-auto mx-auto filter grayscale hover:grayscale-0 drop-shadow-md"
                   loading="lazy"
                 />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
+
+        <p className="mt-12 text-md text-gray-700">
+          Want to see your brand here?{" "}
+          <a
+            href="#contact"
+            className="text-orange-600 underline hover:text-orange-700"
+          >
+            Get in touch
+          </a>
+        </p>
       </div>
 
-      {/* Keyframe CSS */}
       <style jsx>{`
-        @keyframes marquee {
+        @keyframes marquee-left {
           0% {
             transform: translateX(0%);
           }
           100% {
             transform: translateX(-50%);
           }
+        }
+
+        @keyframes marquee-right {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(50%);
+          }
+        }
+
+        .marquee-left {
+          animation: marquee-left 25s linear infinite;
+        }
+
+        .marquee-right {
+          animation: marquee-right 25s linear infinite reverse;
         }
       `}</style>
     </section>

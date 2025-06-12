@@ -14,7 +14,7 @@ export default function AgencySection() {
           viewport={{ once: true }}
         >
           <Image
-            src={"/agency-illustration.svg"}
+            src={"/Building.png"}
             alt="Agency Illustration"
             layout="responsive"
             width={512}

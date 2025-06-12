@@ -14,7 +14,7 @@ const lightingCategories = [
   {
     title: "Bus Shelter Advertising",
     description: "Make Your Brand a Daily Landmark",
-    img: "/BUs.jpg",
+    img: "/Bus Shelter.jpg",
     details:
       "With long exposure times and high visibility on busy roads, bus shelters are a powerful way to reach pedestrians and commuters alike. A great blend of frequency and reach.",
   },

@@ -7,7 +7,7 @@ const lightingCategories = [
   {
     title: "Lift Panels",
     description: "Target Where Attention Is Undivided.",
-    img: "/Lift Panel.jpg",
+    img: "/Lift Final.jpg",
     details:
       "Capture eyeballs in residential and commercial buildings with lift panel branding. Ideal for hyperlocal targeting, these ads deliver high recall in closed, captive environments.",
   },
@@ -35,7 +35,7 @@ const lightingCategories = [
   {
     title: " Mobile Van Branding",
     description: "Mobile Impact with Traditional Strength",
-    img: "/van.jpg",
+    img: "/Van.jpg",
     details:
       "Our branded mobile vans are a proven method for high-reach campaigns, especially in local markets and rural areas. Fully customizable and route-specific, they ensure your brand travels far and wide.",
   },

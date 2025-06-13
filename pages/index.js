@@ -9,12 +9,15 @@ import ClientLogos from "../components/ClientLogos";
 import PresenceNagpur from "../components/PresenceNagpur";
 
 import AgencySection from "../components/AgencySection";
+import BillboardAd from "../components/BillboardAd";
+import HeroSectionWith3D from "../components/HeroSectionWith3D";
 
 export default function Home() {
   return (
     <main className="overflow-hidden">
       <Header />
-      <HeroSection />
+      <HeroSectionWith3D />
+
       <AgencySection />
       <LightingSolutions />
       <WhyChooseUs />

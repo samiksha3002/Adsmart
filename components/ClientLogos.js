@@ -1,4 +1,5 @@
-// components/ClientLogos.js
+"use client";
+
 import { motion } from "framer-motion";
 import React from "react";
 
@@ -14,7 +15,6 @@ const clients = [
 export default function ClientLogos() {
   return (
     <section className="relative bg-gradient-to-b from-white to-orange-50 py-24 overflow-hidden">
-      {/* Decorative SVG wave background */}
       <svg
         className="absolute top-0 left-0 w-full h-48 -z-10"
         viewBox="0 0 1440 320"
@@ -48,58 +48,27 @@ export default function ClientLogos() {
           outstanding results.
         </motion.p>
 
-        {/* Dual-direction marquee for desktop */}
-        <div className="hidden md:block space-y-10">
-          {/* Top row - Left to right */}
-          <div className="overflow-hidden relative">
-            <div className="marquee-left flex gap-16">
-              {[...clients, ...clients].map(({ id, name, logo }, idx) => (
-                <motion.div
-                  key={`top-${id}-${idx}`}
-                  className="bg-white/60 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-md cursor-pointer hover:scale-110 transform transition duration-500 ease-in-out"
-                  title={name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <img
-                    src={logo}
-                    alt={name}
-                    className="h-14 md:h-16 w-auto mx-auto filter grayscale hover:grayscale-0 transition duration-500 drop-shadow-md"
-                    loading="lazy"
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Bottom row - Right to left */}
-          <div className="overflow-hidden relative">
-            <div className="marquee-right flex gap-16">
-              {[...clients, ...clients].map(({ id, name, logo }, idx) => (
-                <motion.div
-                  key={`bottom-${id}-${idx}`}
-                  className="bg-white/60 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-md cursor-pointer hover:scale-110 transform transition duration-500 ease-in-out"
-                  title={name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <img
-                    src={logo}
-                    alt={name}
-                    className="h-14 md:h-16 w-auto mx-auto filter grayscale hover:grayscale-0 transition duration-500 drop-shadow-md"
-                    loading="lazy"
-                  />
-                </motion.div>
-              ))}
-            </div>
+        {/* Single Infinite Marquee Row */}
+        <div className="relative overflow-hidden w-full py-4">
+          <div className="marquee-track flex gap-16">
+            {[...clients, ...clients].map(({ id, name, logo }, idx) => (
+              <div
+                key={`${id}-${idx}`}
+                className="bg-white/70 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-md cursor-pointer hover:scale-105 transition duration-500 ease-in-out"
+                title={name}
+              >
+                <img
+                  src={logo}
+                  alt={name}
+                  className="h-14 md:h-16 w-auto mx-auto filter grayscale hover:grayscale-0 transition duration-500 drop-shadow-md"
+                  loading="lazy"
+                />
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Mobile Swiper */}
+        {/* Mobile Scroll */}
         <div className="md:hidden overflow-x-auto whitespace-nowrap mt-6 px-1 scrollbar-hide">
           <div className="inline-flex gap-6">
             {clients.map(({ id, name, logo }) => (
@@ -130,31 +99,20 @@ export default function ClientLogos() {
         </p>
       </div>
 
+      {/* CSS for Marquee */}
       <style jsx>{`
-        @keyframes marquee-left {
+        .marquee-track {
+          animation: scroll-left 25s linear infinite;
+          width: max-content;
+        }
+
+        @keyframes scroll-left {
           0% {
             transform: translateX(0%);
           }
           100% {
             transform: translateX(-50%);
           }
-        }
-
-        @keyframes marquee-right {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(50%);
-          }
-        }
-
-        .marquee-left {
-          animation: marquee-left 25s linear infinite;
-        }
-
-        .marquee-right {
-          animation: marquee-right 25s linear infinite reverse;
         }
       `}</style>
     </section>

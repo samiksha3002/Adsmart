@@ -92,7 +92,7 @@ export default function WhyChooseUs() {
         >
           <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-orange-200">
             <img
-              src="/temp1.jpg"
+              src="/Why.jpg"
               alt="Why Choose Us"
               className="object-cover w-full h-full"
             />

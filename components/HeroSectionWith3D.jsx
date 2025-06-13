@@ -21,7 +21,7 @@ export default function HeroSectionWith3D() {
         className="w-full md:w-1/2 text-center md:text-left z-10"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 3 }}
+        transition={{ duration: 1 }}
       >
         <motion.h1
           className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-6"
@@ -58,7 +58,7 @@ export default function HeroSectionWith3D() {
             tiltMaxAngleX={10}
             tiltMaxAngleY={10}
             glareEnable={true}
-            glareMaxOpacity={0.2}
+            glareMaxOpacity={1.5}
             glareColor="#ffa500"
             glarePosition="all"
             scale={1.02}

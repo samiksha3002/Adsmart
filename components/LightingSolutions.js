@@ -7,7 +7,7 @@ const lightingCategories = [
   {
     title: "Lift Panels",
     description: "Target Where Attention Is Undivided.",
-    img: "/Elevator advertising.jpg",
+    img: "/Lift Panel.jpg",
     details:
       "Capture eyeballs in residential and commercial buildings with lift panel branding. Ideal for hyperlocal targeting, these ads deliver high recall in closed, captive environments.",
   },

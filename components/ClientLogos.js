@@ -15,6 +15,7 @@ const clients = [
 export default function ClientLogos() {
   return (
     <section className="relative bg-gradient-to-b from-white to-orange-50 py-24 overflow-hidden">
+      {/* Decorative SVG Wave */}
       <svg
         className="absolute top-0 left-0 w-full h-48 -z-10"
         viewBox="0 0 1440 320"
@@ -38,6 +39,7 @@ export default function ClientLogos() {
         >
           Our Esteemed Clients
         </motion.h2>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -48,7 +50,7 @@ export default function ClientLogos() {
           outstanding results.
         </motion.p>
 
-        {/* Single Infinite Marquee Row */}
+        {/* Single Infinite Marquee Row for all devices */}
         <div className="relative overflow-hidden w-full py-4">
           <div className="marquee-track flex gap-16">
             {[...clients, ...clients].map(({ id, name, logo }, idx) => (
@@ -60,7 +62,7 @@ export default function ClientLogos() {
                 <img
                   src={logo}
                   alt={name}
-                  className="h-14 md:h-16 w-auto mx-auto filter grayscale hover:grayscale-0 transition duration-500 drop-shadow-md"
+                  className="h-14 md:h-16 w-auto mx-auto drop-shadow-md"
                   loading="lazy"
                 />
               </div>
@@ -68,26 +70,7 @@ export default function ClientLogos() {
           </div>
         </div>
 
-        {/* Mobile Scroll */}
-        <div className="md:hidden overflow-x-auto whitespace-nowrap mt-6 px-1 scrollbar-hide">
-          <div className="inline-flex gap-6">
-            {clients.map(({ id, name, logo }) => (
-              <div
-                key={id}
-                className="bg-white/70 rounded-xl p-4 border border-white/20 shadow-md w-44 inline-block hover:scale-105 transition duration-300"
-                title={name}
-              >
-                <img
-                  src={logo}
-                  alt={name}
-                  className="h-14 w-auto mx-auto filter grayscale hover:grayscale-0 drop-shadow-md"
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
+        {/* CTA */}
         <p className="mt-12 text-md text-gray-700">
           Want to see your brand here?{" "}
           <a
@@ -99,7 +82,7 @@ export default function ClientLogos() {
         </p>
       </div>
 
-      {/* CSS for Marquee */}
+      {/* CSS for Marquee Animation */}
       <style jsx>{`
         .marquee-track {
           animation: scroll-left 25s linear infinite;

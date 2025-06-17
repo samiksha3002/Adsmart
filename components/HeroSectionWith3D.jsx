@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Tilt from "react-parallax-tilt";
+import Link from "next/link"; // ✅ Import Link
 
 const ads = [
   "/Elevator.jpg",
@@ -32,22 +33,27 @@ export default function HeroSectionWith3D() {
           Outdoor Advertising <br />
           <span className="text-orange-600">With Maximum Impact</span>
         </motion.h1>
+
         <motion.p
           className="text-base sm:text-lg text-gray-700 mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          From elevator panels to LED vans, our ads elevate your brand presence
+          From Elevator Panel to LED Van, our ads elevate your brand presence
           with innovation and reach.
         </motion.p>
-        <motion.button
-          className="bg-orange-600 hover:bg-orange-700 transition text-white px-6 py-3 rounded-full font-semibold shadow-lg"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Discover Our Network
-        </motion.button>
+
+        {/* ✅ Updated: Wrapped in <Link> */}
+        <Link href="/#presence">
+          <motion.button
+            className="bg-orange-600 hover:bg-orange-700 transition text-white px-6 py-3 rounded-full font-semibold shadow-lg"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Discover Our Network
+          </motion.button>
+        </Link>
       </motion.div>
 
       {/* RIGHT: ADVANCED TILT & FLOATING CARDS */}

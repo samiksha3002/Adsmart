@@ -5,25 +5,25 @@ import { useState, useEffect } from "react";
 
 const testimonials = [
   {
-    name: "Aarav Mehta",
-    title: "Interior Designer, Mumbai",
+    name: "Laxmi Mehta",
+    title: "Interior Designer, Nagpur",
     message:
       "Their lighting solutions completely transformed my client's luxury villa. Exceptional service and attention to detail!",
-    image: "/testimonials/person1.jpg",
+    image: "/person.jpeg",
   },
   {
     name: "Priya Kapoor",
-    title: "Homeowner, Delhi",
+    title: "Homeowner, Nagpur",
     message:
       "The automation setup has made my life so much easier. I control everything from my phone, even when I’m traveling!",
-    image: "/testimonials/person2.jpg",
+    image: "/person2.jpeg",
   },
   {
     name: "Rahul Verma",
-    title: "Retail Architect, Bangalore",
+    title: "Retail Architect, Nagpur",
     message:
       "Impressive execution of commercial lighting for our showroom. The ambiance draws customers in naturally.",
-    image: "/testimonials/person3.jpg",
+    image: "/person3.jpeg",
   },
 ];
 

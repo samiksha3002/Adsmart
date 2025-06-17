@@ -123,7 +123,7 @@ export default function LightingSolutions() {
         transition={{ duration: 1 }}
         className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-yellow-400 to-black drop-shadow-[0_0_20px_rgba(255,165,0,0.6)]"
       >
-        Our Lighting Solutions
+        Our Media Solutions
       </motion.h2>
 
       <div className="flex flex-col gap-16 max-w-7xl mx-auto">

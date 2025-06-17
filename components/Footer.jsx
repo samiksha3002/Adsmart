@@ -9,34 +9,34 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-tr from-[#111111] via-[#1a1a1a] to-[#111111] text-gray-300 py-16 px-6 sm:px-10 md:px-20 overflow-hidden select-none">
-      {/* Dotted Background Overlay */}
+    <footer className="relative bg-white text-gray-800 py-20 px-6 sm:px-10 md:px-20 overflow-hidden select-none">
+      {/* Subtle Pattern Background */}
       <div
         className="pointer-events-none absolute inset-0 opacity-10"
         style={{
           backgroundImage:
             "radial-gradient(rgba(250, 102, 0, 0.1) 1px, transparent 1px)",
-          backgroundSize: "20px 20px",
+          backgroundSize: "24px 24px",
           zIndex: 0,
         }}
       ></div>
 
-      {/* Glowing Line Animation */}
+      {/* Glowing Orange Line */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FA6600] to-transparent animate-shimmer z-10" />
 
       {/* Content Grid */}
-      <div className="relative max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 z-20">
-        {/* Logo + Tagline */}
-        <div className="flex flex-col items-start space-y-6">
+      <div className="relative z-20 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-14">
+        {/* Logo & Tagline */}
+        <div className="flex flex-col space-y-6">
           <Image
             src="/logo.jpg"
             alt="Logo"
             width={130}
             height={130}
-            className="brightness-125 object-contain"
+            className="object-contain rounded-md"
             priority
           />
-          <p className="text-sm leading-relaxed text-gray-400 max-w-sm">
+          <p className="text-sm text-gray-600 leading-relaxed">
             Premium outdoor advertising solutions designed to illuminate your
             brand in the urban landscape.
           </p>
@@ -44,10 +44,10 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div>
-          <h4 className="text-lg font-semibold text-[#FA6600] tracking-wide mb-5 uppercase">
+          <h4 className="text-lg font-semibold text-[#FA6600] mb-5 uppercase tracking-wide">
             Quick Links
           </h4>
-          <ul className="flex flex-col space-y-3 text-gray-400 text-sm">
+          <ul className="space-y-3 text-sm text-gray-700">
             {["Home", "Services", "Portfolio", "Contact"].map((link, i) => (
               <li key={i}>
                 <a
@@ -61,48 +61,63 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact Info */}
+        {/* Contact Information */}
         <div>
-          <h4 className="text-lg font-semibold text-[#FA6600] tracking-wide mb-5 uppercase">
+          <h4 className="text-lg font-semibold text-[#FA6600] mb-5 uppercase tracking-wide">
             Contact
           </h4>
-          <ul className="text-gray-400 text-sm space-y-4">
+          <ul className="text-sm text-gray-700 space-y-4">
             <li className="flex items-start gap-2">
-              📍 <span>123 Outdoor Ave, Dubai, UAE</span>
+              📍
+              <span>
+                Plot No 555-B, Wathoda Road, Hiwari Layout,
+                <br />
+                Near Power House, Nagpur - 440008
+              </span>
             </li>
             <li className="flex items-start gap-2">
-              📞 <span>+971 123 4567</span>
+              📞 <span>7709006859 , 7410088817</span>
             </li>
             <li className="flex items-start gap-2">
-              📧 <span>contact@outdoorad.com</span>
+              📧 <span>marketing.adssmart@gmail.com</span>
             </li>
           </ul>
         </div>
 
-        {/* Social Links */}
+        {/* Social Media Icons */}
         <div>
-          <h4 className="text-lg font-semibold text-[#FA6600] tracking-wide mb-5 uppercase">
+          <h4 className="text-lg font-semibold text-[#FA6600] mb-5 uppercase tracking-wide">
             Follow Us
           </h4>
-          <div className="flex space-x-4 sm:space-x-5">
-            {[FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter].map(
-              (Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label="Social"
-                  className="group bg-[#FA6600]/20 rounded-full p-3 shadow-md shadow-[#FA6600]/40 text-[#FA6600] hover:text-white hover:bg-[#FA6600] transition-all duration-300 flex items-center justify-center scale-100 hover:scale-110"
-                >
-                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 group-hover:drop-shadow-[0_0_6px_rgba(250,102,0,0.8)]" />
-                </a>
-              )
-            )}
+          <div className="flex space-x-4">
+            {[
+              { href: "https://facebook.com", icon: FaFacebookF },
+              {
+                href: "https://www.instagram.com/adssmartoutdooradvertising?igsh=YmI5ODUxemtvY2pp ",
+                icon: FaInstagram,
+              },
+              {
+                href: "https://www.linkedin.com/in/adssmart-outdooradvertising-239a7936b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                icon: FaLinkedinIn,
+              },
+              { href: "https://twitter.com", icon: FaTwitter },
+            ].map(({ href, icon: Icon }, i) => (
+              <a
+                key={i}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-[#FA6600]/10 hover:bg-[#FA6600] text-[#FA6600] hover:text-white transition-all duration-300 p-3 rounded-full shadow-sm shadow-[#FA6600]/20 hover:shadow-md hover:shadow-[#FA6600]/40"
+              >
+                <Icon className="w-5 h-5 sm:w-6 sm:h-6 group-hover:drop-shadow-[0_0_6px_rgba(250,102,0,0.8)]" />
+              </a>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className="mt-14 pt-6 border-t border-gray-800 text-center text-xs text-gray-500 relative z-20">
+      {/* Bottom Line */}
+      <div className="relative z-20 mt-16 border-t border-gray-200 pt-6 text-center text-xs text-gray-500">
         © 2025 Outdoor Advertising Co. All rights reserved.
       </div>
 
